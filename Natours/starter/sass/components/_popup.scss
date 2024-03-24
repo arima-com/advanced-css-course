@@ -10,6 +10,12 @@
     visibility: hidden;
     transition: all 0.3s;
 
+    @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba($color: $color-black, $alpha: 0.3);
+    }
+
     &__content {
         @include absCenter;
         width: 75%;
@@ -26,6 +32,7 @@
     &__left {
         width: 33.3333%;
         display: table-cell;
+        vertical-align: middle;
     }
 
     &__right {
@@ -50,6 +57,10 @@
         column-rule: 1px solid $color-grey-light-2;
 
         hyphens: auto;
+
+        @include respond(tab-land) {
+            column-count: 1;
+        }
     }
 
     &:target {
